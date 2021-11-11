@@ -34,6 +34,8 @@ createPet: async function(req, res){
         //store pet data sent through the request
         const petData = req.body;
 
+        petData.userEmail = req.user[0].email;
+
         //pass the petData to the create method of the Pet model
         let newPet = await Pet.create(petData)
 

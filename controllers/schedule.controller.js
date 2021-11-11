@@ -34,6 +34,8 @@ createSchedule: async function(req, res){
         //store schedule data sent through the request
         const scheduleData = req.body;
 
+        scheduleData.userEmail = req.user[0].email;
+
         //pass the scheduleData to the create method of the Schedule model
         let newSchedule = await Schedule.create(scheduleData)
 

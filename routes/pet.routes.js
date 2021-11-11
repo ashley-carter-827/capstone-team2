@@ -8,7 +8,7 @@ const { validateJwtMiddleware } = require("../auth");
 const petController = require("../controllers/pet.controller")
 
 //post route to create a pet (pet registration)
-router.post("/", petController.createPet)
+router.post("/", validateJwtMiddleware, petController.createPet)
 
 //get route to return all pets (requires auth)
 router.get("/", validateJwtMiddleware, petController.getPets)

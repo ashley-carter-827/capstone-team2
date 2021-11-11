@@ -50,8 +50,6 @@ components:
       additionalProperties: false
       type: object
       properties:
-        userEmail:
-          type: string
         petName:
           type: string
         petGender:
@@ -73,7 +71,6 @@ components:
         petTemperament:
           type: string
       required:
-        - userEmail
         - petName
         - petGender
         - petSpecies
@@ -87,8 +84,6 @@ components:
       additionalProperties: false
       type: object
       properties:
-        userEmail:
-          type: string
         scheduleGroomer:
           type: string
         scheduleDate:
@@ -100,7 +95,6 @@ components:
         scheduleServices:
           type: string
       required:
-        - userEmail
         - scheduleGroomer
         - scheduleDate
         - scheduleTime
@@ -383,6 +377,8 @@ paths:
       x-controller: pets
       tags:
         - Pets
+      security:
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -464,6 +460,8 @@ paths:
         x-controller: schedules
         tags:
           - Schedules
+        security:
+        - bearerAuth: []
         requestBody:
           required: true
           content:
