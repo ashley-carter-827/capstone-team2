@@ -300,6 +300,21 @@ paths:
         - Users
       security:
         - bearerAuth: []
+      parameters:
+        - name: firstName
+          in: query
+          description: Get users with a specific first name (fuzzy, case insensitve)
+          required: false
+          schema:
+            firstName:
+            type: string
+        - name: lastName
+          in: query
+          description: Get users with a specific last name (fuzzy, case insensitve)
+          required: false
+          schema:
+            firstName:
+            type: string
       responses:
         '200':
           description: OK
