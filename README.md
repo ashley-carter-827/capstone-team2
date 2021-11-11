@@ -4,19 +4,19 @@ In this project, we will use what we know about Node.js, MongoDB, and Express to
 ## Learning Objectives
 In this project we will practice the following:
 
-- Bulding a RESTful API with Node.js, MongoDB, and Express.js
+- Building a RESTful API with Node.js, MongoDB, and Express.js
 - Communicating and working together as a development team
 - Following SCRUM processes and practicing SCRUM roles
 
 ## Basic Requirements
 **Your API should include the following functionality in order to be considered complete:**
  
- - At least 2 addtional resource or endpoints in addition to the Users and Auth
- - At least 1 addtional route for a resource that requires authentication
+ - At least 2 additional resource or endpoints in addition to the Users and Auth
+ - At least 1 additional route for a resource that requires authentication
  - At least one route for every CRUD operation should represented across all of your resources or endpoints (does not have to be on all resources)
  - Return proper HTTP status codes for API requests
  - Use validation on your Mongoose Models [Built-in validation docs](https://mongoosejs.com/docs/validation.html#built-in-validators)
- - Make an attempt to maintain the OpenAPI Specification for the Swagger documentation [Online Swagger Editior](https://editor.swagger.io/)
+ - Make an attempt to maintain the OpenAPI Specification for the Swagger documentation [Online Swagger Editor](https://editor.swagger.io/)
  - Ensure all endpoints work with Postman or similar HTTP Client
 
 **Other Requirements**
@@ -75,7 +75,7 @@ These are roles for members the project that should be assigned or at least shar
 
 **Stand-up**
 - Each member of team has in written form what they’ve done, what they plan to do, and any blockers. This should be done first thing when starting the day
-- The SCRUM master and team should review the posted stand-ups and have any neccessary discussion around blockers or areas where the team can support each other
+- The SCRUM master and team should review the posted stand-ups and have any necessary discussion around blockers or areas where the team can support each other
 
 **EOD Check-in**
 - Each team required to give update of tasks completed today, and any hurdles they’ve ran into

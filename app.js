@@ -35,7 +35,10 @@ app.use(swaggerDocsRouter);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-
+//tell our app to use our clinics route 
+app.use('/api/clinics', clinicsRouter);
+//tell our app to use our hubs route 
+app.use('/api/hubs', hubsRouter);
 //tell our app to use our user routes and prefix them with /api
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
