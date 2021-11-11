@@ -22,6 +22,7 @@ const authRouter = require('./routes/auth.routes');
 const usersRouter = require('./routes/user.routes');
 const petsRouter = require('./routes/pet.routes');
 const swaggerDocsRouter = require("./routes/swagger.routes");
+const schedulesRouter = require('./routes/schedule.routes');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use('/auth', authRouter);
 //tell our app to use our user routes and prefix them with /api
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
+app.use('/api/schedule', schedulesRouter);
 
 
 //custom error hadndling

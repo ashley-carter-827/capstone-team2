@@ -38,7 +38,7 @@ createPet: async function(req, res){
         let newPet = await Pet.create(petData)
 
         //return the newly created pet
-        res.status(201).json(await Pet.findById(newPet._id))
+        res.status(201).json(newPet)
         
     } catch (error) {
         //handle errors creating pet

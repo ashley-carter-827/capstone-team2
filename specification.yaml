@@ -83,6 +83,53 @@ components:
         - petLegs
         - petAllergies
         - petTemperament        
+    Schedule:
+      additionalProperties: false
+      type: object
+      properties:
+        userEmail:
+          type: string
+        scheduleGroomer:
+          type: string
+        scheduleDate:
+          type: string
+        scheduleTime:
+          type: string
+        scheduleLocation:
+          type: string
+        scheduleServices:
+          type: string
+      required:
+        - userEmail
+        - scheduleGroomer
+        - scheduleDate
+        - scheduleTime
+        - scheduleLocation
+        - scheduleServices
+    UserResponse:
+      additionalProperties: false
+      type: object
+      properties:
+        _id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        streetAddress1:
+          type: string
+        streetAddress2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
     PetResponse:
       additionalProperties: false
       type: object
@@ -111,30 +158,23 @@ components:
           type: string 
         petTemperament:
           type: string
-
-    UserResponse:
+    ScheduleResponse:
       additionalProperties: false
       type: object
       properties:
         _id:
           type: string
-        firstName:
+        userEmail:
           type: string
-        lastName:
+        scheduleGroomer:
           type: string
-        email:
+        scheduleDate:
+          type: date
+        scheduleTime:
+          type: date
+        scheduleLocation:
           type: string
-        phoneNumber:
-          type: string
-        streetAddress1:
-          type: string
-        streetAddress2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
+        scheduleServices:
           type: string
     Login:
       additionalProperties: false
@@ -302,7 +342,7 @@ paths:
           $ref: '#/components/responses/400'
   /api/pets:
     get:
-      summary: Get a list of users
+      summary: Get a list of pets
       tags:
         - Pets
       security:
@@ -381,3 +421,50 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
+  /api/schedule:
+      get:
+        summary: Get a list of schedules
+        tags:
+          - Schedules
+        security:
+          - bearerAuth: []
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  allOf:
+                    - type: object
+                      properties:
+                        users:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/ScheduleResponse'
+          '400':
+            $ref: '#/components/responses/400'
+      post:
+        summary: Create a new schedule
+        operationId: createSchedule
+        x-controller: schedules
+        tags:
+          - Schedules
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  allOf:
+                    - type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/ScheduleResponse'
+          '400':
+            $ref: '#/components/responses/400' 
