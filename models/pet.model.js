@@ -4,8 +4,7 @@ const petSchema = new mongoose.Schema(
     {
     userEmail: {
         type: String, 
-        required: true, 
-        unique: false,
+        required: true,
         match: [/.+\@.+\..+/, "Invalid E-mail Address"],
     },      
     petName: {

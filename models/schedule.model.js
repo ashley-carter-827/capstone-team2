@@ -33,8 +33,6 @@ const scheduleSchema = new mongoose.Schema(
     }
     
 })
-// do we need line 60-78 in user.model.js for security??
-// how do we handle a time?
 
 const Schedule = mongoose.model('Schedule', scheduleSchema);
 
