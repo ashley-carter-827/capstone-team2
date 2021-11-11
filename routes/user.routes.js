@@ -16,4 +16,7 @@ router.get("/", validateJwtMiddleware, userController.getUsers)
 //put route to update a user (requires auth)
 router.put("/:email", validateJwtMiddleware, userController.updateUser)
 
+//get route to return a specific users (requires auth)
+router.get("/:email", validateJwtMiddleware, userController.getUser)
+
 module.exports = router;
