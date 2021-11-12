@@ -4,36 +4,40 @@ const mongoose = require("mongoose");
 //is this needed?
 const bcrypt = require("bcrypt")
 
-const scheduleSchema = new mongoose.Schema(
+const appointmentSchema = new mongoose.Schema(
     {
     userEmail: {
         type: String, 
         required: true, 
         match: [/.+\@.+\..+/, "Invalid E-mail Address"],
     },      
-    scheduleGroomer: {
+    appointmentGroomer: {
         type: String, 
         required: true,
     },
-    scheduleDate: {
+    appointmentDate: {
         type: String, 
         required: true,
     },
-    scheduleTime: { 
+    appointmentTime: { 
         type: String, 
         required: true, 
     },
-    scheduleLocation: { 
+    appointmentLocation: { 
         type: String, 
         required: true,
     },
-    scheduleServices: { 
+    appointmentServices: { 
         type: String, 
+        required: true,
+    },
+    appointmentPetName: {
+        type: String,
         required: true,
     }
     
 })
 
-const Schedule = mongoose.model('Schedule', scheduleSchema);
+const Appointment = mongoose.model('Appointment', appointmentSchema);
 
-module.exports = Schedule;
+module.exports = Appointment;

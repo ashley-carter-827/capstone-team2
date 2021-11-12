@@ -80,26 +80,29 @@ components:
         - petLegs
         - petAllergies
         - petTemperament        
-    Schedule:
+    Appointment:
       additionalProperties: false
       type: object
       properties:
-        scheduleGroomer:
+        appointmentGroomer:
           type: string
-        scheduleDate:
+        appointmentDate:
           type: string
-        scheduleTime:
+        appointmentTime:
           type: string
-        scheduleLocation:
+        appointmentLocation:
           type: string
-        scheduleServices:
+        appointmentServices:
+          type: string
+        appointmentPetName:
           type: string
       required:
-        - scheduleGroomer
-        - scheduleDate
-        - scheduleTime
-        - scheduleLocation
-        - scheduleServices
+        - appointmentGroomer
+        - appointmentDate
+        - appointmentTime
+        - appointmentLocation
+        - appointmentServices
+        - appointmentPetName
     UserResponse:
       additionalProperties: false
       type: object
@@ -152,7 +155,7 @@ components:
           type: string 
         petTemperament:
           type: string
-    ScheduleResponse:
+    AppointmentResponse:
       additionalProperties: false
       type: object
       properties:
@@ -160,15 +163,17 @@ components:
           type: string
         userEmail:
           type: string
-        scheduleGroomer:
+        appointmentGroomer:
           type: string
-        scheduleDate:
+        appointmentDate:
           type: date
-        scheduleTime:
+        appointmentTime:
           type: date
-        scheduleLocation:
+        appointmentLocation:
           type: string
-        scheduleServices:
+        appointmentServices:
+          type: string
+        appointmentPetName:
           type: string
     Login:
       additionalProperties: false
@@ -432,11 +437,11 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
-  /api/schedule:
+  /api/appointment:
       get:
-        summary: Get a list of schedules
+        summary: Get a list of appointments
         tags:
-          - Schedules
+          - Appointments
         security:
           - bearerAuth: []
         responses:
@@ -451,15 +456,15 @@ paths:
                         users:
                           type: array
                           items:
-                            $ref: '#/components/schemas/ScheduleResponse'
+                            $ref: '#/components/schemas/AppointmentResponse'
           '400':
             $ref: '#/components/responses/400'
       post:
-        summary: Create a new schedule
-        operationId: createSchedule
-        x-controller: schedules
+        summary: Create a new appointment
+        operationId: createAppointment
+        x-controller: appointments
         tags:
-          - Schedules
+          - Appointments
         security:
         - bearerAuth: []
         requestBody:
@@ -467,7 +472,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Schedule'
+                $ref: '#/components/schemas/Appointment'
         responses:
           '200':
             description: OK
@@ -478,6 +483,6 @@ paths:
                     - type: object
                       properties:
                         user:
-                          $ref: '#/components/schemas/ScheduleResponse'
+                          $ref: '#/components/schemas/AppointmentResponse'
           '400':
             $ref: '#/components/responses/400' 
