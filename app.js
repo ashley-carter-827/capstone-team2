@@ -6,6 +6,9 @@ const logger = require('morgan');
 
 const auth = require("./auth");
 
+const cors = require('cors');
+
+
 //Bring in Mongoose so we can communicate with MongoDB
 const mongoose = require('mongoose')
 
@@ -32,6 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(auth.middleware)
 app.use(swaggerDocsRouter);
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
