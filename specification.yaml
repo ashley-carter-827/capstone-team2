@@ -79,7 +79,33 @@ components:
         - petHairType
         - petLegs
         - petAllergies
-        - petTemperament        
+        - petTemperament    
+    Service:
+      additionalProperties: false
+      type: object
+      properties:
+        hairlessWaxing:
+          type: string
+        teethfangCleaning:
+          type: string
+        washDry:
+          type: string
+        moisturize:
+          type: string
+        facials:
+          type: string
+        maniPedi:
+          type: string
+        hairColor:
+          type: string
+        hairCut:
+          type: string
+        massage:
+          type: string 
+        exfoliation:
+          type: string
+        bodyArt:
+          type: string  
     Appointment:
       additionalProperties: false
       type: object
@@ -154,6 +180,34 @@ components:
         petAllergiesDetails:
           type: string 
         petTemperament:
+          type: string
+    ServiceResponse:
+      additionalProperties: false
+      type: object
+      properties:
+        _id:
+          type: string
+        hairlessWaxing:
+          type: string
+        teethfangCleaning:
+          type: string
+        washDry:
+          type: string
+        moisturize:
+          type: string
+        facials:
+          type: string
+        maniPedi:
+          type: string
+        hairColor:
+          type: string
+        hairCut:
+          type: string
+        massage:
+          type: string 
+        exfoliation:
+          type: string
+        bodyArt:
           type: string
     AppointmentResponse:
       additionalProperties: false
@@ -402,7 +456,54 @@ paths:
                       user:
                         $ref: '#/components/schemas/PetResponse'
         '400':
-          $ref: '#/components/responses/400'        
+          $ref: '#/components/responses/400'
+  /api/services:
+    get:
+      summary: Get a list of services
+      tags:
+        - Services
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/400'
+    post:
+      summary: Create a new service
+      operationId: createService
+      x-controller: services
+      tags:
+        - Services
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/400'            
   /api/users/{email}:
     put:
       summary: Update user
