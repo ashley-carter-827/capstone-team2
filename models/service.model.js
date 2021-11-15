@@ -2,38 +2,17 @@ const mongoose = require('mongoose');
 
 const serviceSchema = new mongoose.Schema(
     {
-    hairlessWaxing: {
+    serviceName: {
         type: String,
     },      
-    teethfangCleaning: {
+    serviceDescription: {
         type: String,
     },
-    washDry: {
+    servicePrice: {
         type: String,
     },
-    moisturize: {      
-        type: String,
-    },
-    facials: {
-        type: String,
-    },
-    maniPedi: {
-        type: String,      
-    },
-    hairColor: {
-        type: String,        
-    },
-    hairCut: {
-        type: String,        
-    },
-    massage: {
-        type: String,      
-    },
-    exfoliation: {
-        type: String,                
-    },
-    bodyArt: {
-        type: String, 
+    serviceDuration: {      
+        type: String,     
     }
 
 })

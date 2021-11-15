@@ -84,28 +84,14 @@ components:
       additionalProperties: false
       type: object
       properties:
-        hairlessWaxing:
+        serviceName:
           type: string
-        teethfangCleaning:
+        serviceDescription:
           type: string
-        washDry:
+        servicePrice:
           type: string
-        moisturize:
+        serviceDuration:
           type: string
-        facials:
-          type: string
-        maniPedi:
-          type: string
-        hairColor:
-          type: string
-        hairCut:
-          type: string
-        massage:
-          type: string 
-        exfoliation:
-          type: string
-        bodyArt:
-          type: string  
     Appointment:
       additionalProperties: false
       type: object
@@ -187,27 +173,13 @@ components:
       properties:
         _id:
           type: string
-        hairlessWaxing:
+        serviceName:
           type: string
-        teethfangCleaning:
+        serviceDescription:
           type: string
-        washDry:
+        servicePrice:
           type: string
-        moisturize:
-          type: string
-        facials:
-          type: string
-        maniPedi:
-          type: string
-        hairColor:
-          type: string
-        hairCut:
-          type: string
-        massage:
-          type: string 
-        exfoliation:
-          type: string
-        bodyArt:
+        serviceDuration:
           type: string
     AppointmentResponse:
       additionalProperties: false
