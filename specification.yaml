@@ -79,7 +79,19 @@ components:
         - petHairType
         - petLegs
         - petAllergies
-        - petTemperament        
+        - petTemperament    
+    Service:
+      additionalProperties: false
+      type: object
+      properties:
+        serviceName:
+          type: string
+        serviceDescription:
+          type: string
+        servicePrice:
+          type: string
+        serviceDuration:
+          type: string
     Appointment:
       additionalProperties: false
       type: object
@@ -154,6 +166,20 @@ components:
         petAllergiesDetails:
           type: string 
         petTemperament:
+          type: string
+    ServiceResponse:
+      additionalProperties: false
+      type: object
+      properties:
+        _id:
+          type: string
+        serviceName:
+          type: string
+        serviceDescription:
+          type: string
+        servicePrice:
+          type: string
+        serviceDuration:
           type: string
     AppointmentResponse:
       additionalProperties: false
@@ -402,7 +428,54 @@ paths:
                       user:
                         $ref: '#/components/schemas/PetResponse'
         '400':
-          $ref: '#/components/responses/400'        
+          $ref: '#/components/responses/400'
+  /api/services:
+    get:
+      summary: Get a list of services
+      tags:
+        - Services
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/400'
+    post:
+      summary: Create a new service
+      operationId: createService
+      x-controller: services
+      tags:
+        - Services
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/400'            
   /api/users/{email}:
     put:
       summary: Update user

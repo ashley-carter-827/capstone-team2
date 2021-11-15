@@ -24,6 +24,7 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.routes');
 const usersRouter = require('./routes/user.routes');
 const petsRouter = require('./routes/pet.routes');
+const servicesRouter = require('./routes/service.routes');
 const swaggerDocsRouter = require("./routes/swagger.routes");
 const appointmentsRouter = require('./routes/appointment.routes');
 
@@ -43,6 +44,7 @@ app.use('/auth', authRouter);
 //tell our app to use our user routes and prefix them with /api
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
+app.use('/api/services', servicesRouter);
 app.use('/api/appointment', appointmentsRouter);
 
 
