@@ -92,6 +92,8 @@ components:
           type: string
         serviceDuration:
           type: string
+        serviceImage:
+          type: string
     Groomer:
       additionalProperties: false
       type: object
@@ -188,6 +190,8 @@ components:
         servicePrice:
           type: string
         serviceDuration:
+          type: string
+        serviceImage:
           type: string
     GroomerResponse:
       additionalProperties: false
@@ -491,7 +495,42 @@ paths:
                       user:
                         $ref: '#/components/schemas/ServiceResponse'
         '400':
-          $ref: '#/components/responses/400'           
+          $ref: '#/components/responses/400'
+          
+  /api/services/{serviceName}:
+    put:
+      summary: Update service
+      tags:
+        - Services
+      parameters:
+        - in: path
+          name: serviceName
+          required: true
+          schema:
+            type: string
+            description: The name of the service
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: The service updates
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
   /api/groomers:
     get:
       summary: Get a list of groomers
