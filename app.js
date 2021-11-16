@@ -25,6 +25,7 @@ const authRouter = require('./routes/auth.routes');
 const usersRouter = require('./routes/user.routes');
 const petsRouter = require('./routes/pet.routes');
 const servicesRouter = require('./routes/service.routes');
+const groomersRouter = require('./routes/groomer.routes');
 const swaggerDocsRouter = require("./routes/swagger.routes");
 const appointmentsRouter = require('./routes/appointment.routes');
 
@@ -45,6 +46,7 @@ app.use('/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
 app.use('/api/services', servicesRouter);
+app.use('/api/groomers', groomersRouter);
 app.use('/api/appointment', appointmentsRouter);
 
 
