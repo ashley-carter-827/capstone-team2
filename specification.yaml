@@ -92,6 +92,14 @@ components:
           type: string
         serviceDuration:
           type: string
+    Groomer:
+      additionalProperties: false
+      type: object
+      properties:
+        groomerName:
+          type: string
+        groomerBio:
+          type: string
     Appointment:
       additionalProperties: false
       type: object
@@ -180,6 +188,14 @@ components:
         servicePrice:
           type: string
         serviceDuration:
+          type: string
+    GroomerResponse:
+      additionalProperties: false
+      type: object
+      properties:
+        groomerName:
+          type: string
+        groomerBio:
           type: string
     AppointmentResponse:
       additionalProperties: false
@@ -475,7 +491,54 @@ paths:
                       user:
                         $ref: '#/components/schemas/ServiceResponse'
         '400':
-          $ref: '#/components/responses/400'            
+          $ref: '#/components/responses/400'           
+  /api/groomers:
+    get:
+      summary: Get a list of groomers
+      tags:
+        - Groomers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GroomerResponse'
+        '400':
+          $ref: '#/components/responses/400'
+    post:
+      summary: Create a new groomer
+      operationId: createGroomer
+      x-controller: groomers
+      tags:
+        - Groomers
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Groomer'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/GroomerResponse'
+        '400':
+          $ref: '#/components/responses/400'           
   /api/users/{email}:
     put:
       summary: Update user
