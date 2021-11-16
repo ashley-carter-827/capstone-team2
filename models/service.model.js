@@ -12,10 +12,7 @@ const serviceSchema = new mongoose.Schema(
         type: String,
     },
     serviceDuration: {      
-        type: String,  
-    },
-    serviceImage: {      
-        type: String,       
+        type: String,     
     }
 
 })
