@@ -13,6 +13,9 @@ const serviceSchema = new mongoose.Schema(
     },
     serviceDuration: {      
         type: String,     
+    },
+    serviceImage:{
+        type: String,
     }
 
 })
