@@ -92,6 +92,8 @@ components:
           type: string
         serviceDuration:
           type: string
+        serviceImage:
+          type: string
     Groomer:
       additionalProperties: false
       type: object
@@ -188,6 +190,8 @@ components:
         servicePrice:
           type: string
         serviceDuration:
+          type: string
+        serviceImage:
           type: string
     GroomerResponse:
       additionalProperties: false
