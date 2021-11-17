@@ -6,11 +6,11 @@ const bcrypt = require("bcrypt")
 
 const appointmentSchema = new mongoose.Schema(
     {
-    userEmail: {
+    /*userEmail: {
         type: String, 
         required: true, 
         match: [/.+\@.+\..+/, "Invalid E-mail Address"],
-    },      
+    },*/     
     appointmentGroomer: {
         type: String, 
         required: true,

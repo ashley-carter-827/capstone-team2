@@ -13,7 +13,7 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 
 //Use mongoose to connect to MongoDB. Display success or failure message depending on connection status
-mongoose.connect(process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/myApplication", { useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/capstone3Clone", { useNewUrlParser: true })
     .then(() => {
         console.log("we have connected to mongo")
     }).catch(() => {

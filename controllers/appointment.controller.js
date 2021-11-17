@@ -34,7 +34,7 @@ createAppointment: async function(req, res){
         //store appointment data sent through the request
         const appointmentData = req.body;
 
-        appointmentData.userEmail = req.user[0].email;
+        //appointmentData.userEmail = req.user[0].email;
 
         //pass the appointmentData to the create method of the Appointment model
         let newAppointment = await Appointment.create(appointmentData)
