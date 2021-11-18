@@ -108,6 +108,8 @@ components:
       additionalProperties: false
       type: object
       properties:
+        appointmentPetName:
+          type: string
         appointmentGroomer:
           type: string
         appointmentDate:
@@ -118,15 +120,14 @@ components:
           type: string
         appointmentServices:
           type: string
-        appointmentPetName:
-          type: string
+        
       required:
+        - appointmentPetName
         - appointmentGroomer
         - appointmentDate
         - appointmentTime
         - appointmentLocation
-        - appointmentServices
-        - appointmentPetName
+        - appointmentServices        
     UserResponse:
       additionalProperties: false
       type: object
@@ -211,6 +212,8 @@ components:
           type: string
         userEmail:
           type: string
+        appointmentPetName:
+          type: string
         appointmentGroomer:
           type: string
         appointmentDate:
@@ -220,9 +223,7 @@ components:
         appointmentLocation:
           type: string
         appointmentServices:
-          type: string
-        appointmentPetName:
-          type: string
+          type: string        
     Login:
       additionalProperties: false
       type: object
