@@ -5,22 +5,19 @@ const appointmentController = {
  //method to get all appointments using async/await syntax
 getAppointment: async function(req, res){
 
-    //create base query
     let query = {}
-    //if firstName filter appears in query parameters then modify the query to do a fuzzy search
+
     if(req.query.userEmail){
         const regex = new RegExp(`.*${req.query.userEmail}.*$`, "i")
         query.userEmail = {'$regex':regex}
     }
-    
-     
-    //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
+   //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
     try {
         
         //use our model to find users that match a query.
         //{} is the current query which really mean find all the users
         //we use await here since this is an async process and we want the code to wait for this to finish before moving on to the next line of code
-        let allAppointments = await Appointment.find({})
+        let allAppointments = await Appointment.find(query)
         
         //return all the users that we found in JSON format
         res.json(allAppointments)
@@ -43,7 +40,7 @@ createAppointment: async function(req, res){
         //store appointment data sent through the request
         const appointmentData = req.body;
 
-        //appointmentData.userEmail = req.user[0].email;
+        appointmentData.userEmail = req.user[0].email;
 
         //pass the appointmentData to the create method of the Appointment model
         let newAppointment = await Appointment.create(appointmentData)
