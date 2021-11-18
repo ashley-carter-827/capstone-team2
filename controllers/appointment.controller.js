@@ -6,12 +6,12 @@ const appointmentController = {
 getAppointment: async function(req, res){
 
     let query = {}
+
     if(req.query.userEmail){
         const regex = new RegExp(`.*${req.query.userEmail}.*$`, "i")
         query.userEmail = {'$regex':regex}
     }
-
-    //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
+   //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
     try {
         
         //use our model to find users that match a query.
