@@ -10,7 +10,11 @@ const appointmentSchema = new mongoose.Schema(
         type: String, 
         required: true, 
         match: [/.+\@.+\..+/, "Invalid E-mail Address"],
-    },*/     
+    },*/
+    appointmentPetName: {
+        type: String,
+        required: true,
+    },     
     appointmentGroomer: {
         type: String, 
         required: true,
@@ -29,10 +33,6 @@ const appointmentSchema = new mongoose.Schema(
     },
     appointmentServices: { 
         type: String, 
-        required: true,
-    },
-    appointmentPetName: {
-        type: String,
         required: true,
     }
     

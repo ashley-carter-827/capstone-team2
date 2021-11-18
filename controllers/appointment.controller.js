@@ -5,6 +5,15 @@ const appointmentController = {
  //method to get all appointments using async/await syntax
 getAppointment: async function(req, res){
 
+    //create base query
+    let query = {}
+    //if firstName filter appears in query parameters then modify the query to do a fuzzy search
+    if(req.query.userEmail){
+        const regex = new RegExp(`.*${req.query.userEmail}.*$`, "i")
+        query.userEmail = {'$regex':regex}
+    }
+    
+     
     //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
     try {
         
